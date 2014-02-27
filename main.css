@@ -1,0 +1,46 @@
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+.body{
+	background: #303030;
+}
+
+
+.canvasBg{
+	/*height: 80%;
+	width: 80%;*/   
+	/*this line and height width settings in .canvasJet are going to make the game auto fit browser's size
+	 * however, I can not control the margin of canvasJet, to make the jet to display just over this canvas.
+	 * currently the margin is hard coded. i will try to fix this latter.
+	 */
+	 
+	display:block;
+	background:#CCCCCC;
+	margin: 100px auto 0px; /*for margin*/
+	
+	min-width: 400px;
+	min-height: 250px;
+}
+
+
+.inner{
+ 	max-width: auto; /*with maxWidth and maxHeight,*/
+    max-height: auto;
+    /*background: red;*/
+}
+
+.canvasJet,.canvasEnemy,.canvasBullet{
+	/*height: 80%;
+	width: 80%;*/
+	display:block;
+	/*no background for transparent*/
+	margin: -500px auto 0px; /*for margin*/
+}
