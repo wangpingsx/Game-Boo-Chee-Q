@@ -55,12 +55,26 @@ else attachEvent("onload", loadFn);
 	
 	
 	
+	//startbutton
 	var mouseX = 0;
 	var mouseY = 0;
 	var startButton;
 	
 	
+	//touch
+	var touchIsDown = 0;
+	var touchLockingJet = 0;
+	var touchCanvas;
+	
+	var touchX;
+	var touchY;
+	var jet1TouchedX;
+	var jet1TouchedY;
+	
+	
+	
 	var gameLavel = 4;
+	
 	
 	function loop() {
 	    if (isPlaying) {
@@ -117,6 +131,7 @@ else attachEvent("onload", loadFn);
 	}
 	function startTheGame(){
 		realDrawGameBg(bgImage);
+		initTouchControl();
 		if(Object){
 			jet1 = Object.create(Jet);
 			jet1.init();
@@ -136,12 +151,27 @@ else attachEvent("onload", loadFn);
 		document.addEventListener("keydown",keyDownHander,false);
 		document.addEventListener("keyup",keyUpHander,false);
 		document.addEventListener("click",clickHander,false);
+		initStartButton();
+	}
+	
+	function initStartButton(){
 		if(Object){
 			startButton = Object.create(Button);
 		}else{
 			startButton = new Button();
 		}
 		//startButton.init();
+	}
+	function initTouchControl(){
+		touchCanvas = canvasBullet;
+		touchCanvas.addEventListener("mousedown",mouseDown, false);
+        touchCanvas.addEventListener("mousemove",mouseXY, false);
+        touchCanvas.addEventListener("touchstart", touchDown, false);
+	    touchCanvas.addEventListener("touchmove", touchXY, true);
+	    touchCanvas.addEventListener("touchend", touchUp, false);
+         
+        document.body.addEventListener("mouseup", mouseUp, false);
+    	document.body.addEventListener("touchcancel", touchUp, false);
 	}
 	function clickHander(e){
 		mouseX = e.pageX - canvasBg.offsetLeft;
@@ -229,7 +259,8 @@ else attachEvent("onload", loadFn);
 		draw : jetDraw,
 		direction: jetDirection,
 		init: jetInit,
-		updateGunPosition : updateGunPosition
+		updateGunPosition : updateGunPosition,
+		touchChecking:jetTouchChecking
 	};
 	function jetInit(){
 		this.srcX = 0;
@@ -269,6 +300,7 @@ else attachEvent("onload", loadFn);
 	function jetDraw(){
 		cleanJet();
 		this.direction();
+		this.touchChecking();
 		canJetCtx.drawImage(bgImage,this.srcX,this.srcY,this.imageWidth,this.imageheight,this.targetX,this.targetY,this.objWidth,this.objHeight);
 	}
 	function jetDirection(){
@@ -300,6 +332,15 @@ else attachEvent("onload", loadFn);
 		}
 				
 		this.updateGunPosition();
+	}
+	function jetTouchChecking(){
+		if(touchLockingJet ){
+			this.targetX = touchX - jet1TouchedX;
+			this.targetY = touchY - jet1TouchedY;
+			// console.log("target : " + this.targetX + "," + this.targetY);
+			// console.log("touchX : " + touchX + "," + touchY);
+			// console.log("jet1TouchedX : " +  jet1TouchedX + "," + jet1TouchedY);
+		}
 	}
 	
 	
@@ -716,5 +757,72 @@ else attachEvent("onload", loadFn);
 		}
 		return Math.floor(Math.random() *100) < n;
 	}
+	
+	
+	//touch functions
+	function mouseUp(e) {
+	    touchIsDown = 0;
+	    mouseXY(e);
+	}
+	 
+	function touchUp(e) {
+	    touchIsDown = 0;
+	    showPos();
+	}
+	 
+	function mouseDown(e) {
+	    touchIsDown = 1;
+	    mouseXY(e);
+	}
+	  
+	function touchDown(e) {
+	    touchIsDown = 1;
+	    touchXY(e);
+	}
+	 
+	function mouseXY(e) {
+        e.preventDefault();
+	    touchX = e.pageX - touchCanvas.offsetLeft;
+	    touchY = e.pageY - touchCanvas.offsetTop;
+	    showPos();
+	}
+	 
+	function touchXY(e) {
+	    e.preventDefault();
+	    touchX = e.targetTouches[0].pageX - touchCanvas.offsetLeft;
+	    touchY = e.targetTouches[0].pageY - touchCanvas.offsetTop;
+	    showPos();
+	}
+	 
+	function showPos() {
+	    // ctx.font="12px Arial";
+	    // ctx.textAlign="center";
+	    // ctx.textBaseline="middle";
+	    // ctx.fillStyle="rgb(255,255,255)";
+	    // var str = touchX + ", " + touchY;
+	    // if (mouseIsDown) str = str + " down";
+	    // if (!mouseIsDown) str = str + " up";
+	    // ctx.clearRect(0,0, canvas.width,canvas.height);
+	    // ctx.fillText(str, canvas.width /2, canvas.height / 2, canvas.width - 10);
+	     if(touchIsDown ){
+	     	if(!touchLockingJet){
+				var left = jet1.targetX;
+				var right = jet1.imageWidth + jet1.targetX;
+				var top = jet1.targetY;
+				var bottom = jet1.imageheight + jet1.targetY;
+				if(left <= touchX && touchX <= right && top <= touchY && touchY <= bottom){
+			     	console.log("touchLockingJet");
+					touchLockingJet = 1;
+					jet1TouchedX = touchX - left;
+					jet1TouchedY = touchY - top;
+				}
+	     	}
+	     }else{
+	     	touchLockingJet = 0;
+	     }
+	    
+	    
+	}
+
 
 //}//TODO open this before submit
