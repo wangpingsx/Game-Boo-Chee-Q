@@ -77,13 +77,13 @@ else attachEvent("onload", loadFn);
 	//score
 	var gameText;
 	
-	var bgWidth = 1440;
+	
 	
 	var gameLavel = 0;
 	
+	
 	function loop() {
 	    if (isPlaying) {
-	    	drawDynamicBg();
 	        jet1.draw();
 	        drawAllEnemies();
 	        requestAnimFrame(loop);
@@ -140,22 +140,9 @@ else attachEvent("onload", loadFn);
 		initControl();
 	}
 	function startTheGame(){
+		realDrawGameBg(bgImage);
 		initTouchControl();
 		initPlayObjects();
-	}
-	
-	var bgDrawX1 = 0;
-	var bgDrawX2 = bgWidth;
-	
-	function drawDynamicBg(){
-	    bgDrawX1 -= 5;
-	    bgDrawX2 -= 5;
-	    if (bgDrawX1 <= -bgWidth) {
-	        bgDrawX1 = bgWidth;
-	    } else if (bgDrawX2 <= -bgWidth) {
-	        bgDrawX2 = bgWidth;
-	    }
-		realDrawGameBg(bgImage);
 	}
 	
 	function initPlayObjects(){
@@ -514,6 +501,7 @@ else attachEvent("onload", loadFn);
 	
 	
 	function drawStartPic(bgImagex){
+		console.log("realDrawGameBg");
 		// alert("ss");
 		var bgImage = bgImagex;
 		var srcX = 0;
@@ -532,6 +520,7 @@ else attachEvent("onload", loadFn);
 	
 	
 	function realDrawGameBg(bgImagex){
+		console.log("realDrawGameBg");
 		// alert("ss");
 		var bgImage = bgImagex;
 		var srcX = 0;
@@ -541,17 +530,10 @@ else attachEvent("onload", loadFn);
 		
 		var gameWidth = canvasBg.width;
 		var gameHeight = canvasBg.height;
-		var imageWidth = bgWidth;
+		var imageWidth = 800;
 		var imageheight = 500;
 		
-		
-	    canBgCtx.clearRect(0, 0, gameWidth, gameHeight);
-	    // canBgCtx.drawImage(bgImage, 0, 0, 1600, gameHeight, bgDrawX1, 0, 1600, gameHeight);
-	    // canBgCtx.drawImage(bgImage, 0, 0, 1600, gameHeight, bgDrawX2, 0, 1600, gameHeight);
-		
-		canBgCtx.drawImage(bgImage,srcX,srcY,imageWidth,imageheight,bgDrawX1,targetY,imageWidth,gameHeight);		
-		canBgCtx.drawImage(bgImage,srcX,srcY,imageWidth,imageheight,bgDrawX2,targetY,imageWidth,gameHeight);
-
+		canBgCtx.drawImage(bgImage,srcX,srcY,imageWidth,imageheight,targetX,targetY,gameWidth,gameHeight);
 	}
 	
 	function cleanJet(){
