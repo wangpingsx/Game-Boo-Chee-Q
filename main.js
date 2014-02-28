@@ -55,6 +55,10 @@ else attachEvent("onload", loadFn);
 	
 	
 	
+	var mouseX = 0;
+	var mouseY = 0;
+	var startButton;
+	
 	
 	var gameLavel = 4;
 	
@@ -128,6 +132,20 @@ else attachEvent("onload", loadFn);
 	function initControl(){
 		document.addEventListener("keydown",keyDownHander,false);
 		document.addEventListener("keyup",keyUpHander,false);
+		document.addEventListener("click",clickHander,false);
+		if(Object){
+			startButton = Object.create(Button);
+		}else{
+			startButton = new Button();
+		}
+		startButton.init();
+	}
+	function clickHander(e){
+		mouseX = e.pageX = canvasBg.offsetLeft;
+		mouseY = e.pageY = canvasBg.offsetTop;
+		if(startButton.buttonCheckClicked()){
+			startTheGame();
+		}
 	}
 	
 	function keyDownHander(e){
@@ -597,15 +615,15 @@ else attachEvent("onload", loadFn);
 		draw : explosionDraw
 	};
 	function explosionInit(){
-		this.srcX = 100;
-		this.srcY = 400;
+		this.srcX = 730;
+		this.srcY = 500;
 		this.targetX = 0;
 		this.targetY = 0;
 		
-		this.objWidth = 50;
-		this.objHeight = 50;
-		this.imageWidth = 50;
-		this.imageheight = 50;
+		this.objWidth = 63;
+		this.objHeight = 70;
+		this.imageWidth = 63;
+		this.imageheight = 70;
 		
 		this.showTime = 30;// useless? because this this object be drawn on bullet canvase/ 
 		
@@ -626,8 +644,26 @@ else attachEvent("onload", loadFn);
 	
 	
 	
-	
-	
+	var Button = {
+		xLeft : 0,
+		xRight: 0,
+		yTop : 0,
+		yBottom : 0,
+		init : buttonInit,
+		checkClicked:buttonCheckClicked
+	};
+	function buttonInit(xl,xr,yt,yb){
+		this.xLeft = xl;
+		this.xRight = xr;
+		this.yTop = yt;
+		this.yBottom = yb;
+	}
+	function buttonCheckClicked(){
+		if (this.xLeft <= mouseX && mouseX <= this.xRight && this.yTop <= mouseY && mouseY <= this.yBottom){
+			return true;
+		}
+		return false;
+	}
 	
 	
 	
