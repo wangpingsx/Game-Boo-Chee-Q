@@ -112,7 +112,10 @@ else attachEvent("onload", loadFn);
 	}
 	
 	function init(e,bgImage){
+		drawStartPic(bgImage);
 		initControl();
+	}
+	function startTheGame(){
 		realDrawGameBg(bgImage);
 		if(Object){
 			jet1 = Object.create(Jet);
@@ -138,13 +141,14 @@ else attachEvent("onload", loadFn);
 		}else{
 			startButton = new Button();
 		}
-		startButton.init();
+		//startButton.init();
 	}
 	function clickHander(e){
-		mouseX = e.pageX = canvasBg.offsetLeft;
-		mouseY = e.pageY = canvasBg.offsetTop;
-		if(startButton.buttonCheckClicked()){
+		mouseX = e.pageX - canvasBg.offsetLeft;
+		mouseY = e.pageY - canvasBg.offsetTop;
+		if(startButton.checkClicked()){
 			startTheGame();
+			document.removeEventListener("click",clickHander);
 		}
 	}
 	
@@ -427,7 +431,22 @@ else attachEvent("onload", loadFn);
 	
 	
 	
-	
+	function drawStartPic(bgImagex){
+		console.log("realDrawGameBg");
+		// alert("ss");
+		var bgImage = bgImagex;
+		var srcX = 0;
+		var srcY = 675;
+		var targetX = 0;
+		var targetY = 0;
+		
+		var gameWidth = canvasBg.width;
+		var gameHeight = canvasBg.height;
+		var imageWidth = 800;
+		var imageheight = 500;
+		
+		canBgCtx.drawImage(bgImage,srcX,srcY,imageWidth,imageheight,targetX,targetY,gameWidth,gameHeight);
+	}
 	
 	
 	
@@ -643,12 +662,12 @@ else attachEvent("onload", loadFn);
 	
 	
 	
-	
+	//start button
 	var Button = {
-		xLeft : 0,
-		xRight: 0,
-		yTop : 0,
-		yBottom : 0,
+		xLeft : 55,
+		xRight: 250,
+		yTop : 345,//1020 - 675
+		yBottom : 395, //1070 - 675
 		init : buttonInit,
 		checkClicked:buttonCheckClicked
 	};
@@ -664,7 +683,6 @@ else attachEvent("onload", loadFn);
 		}
 		return false;
 	}
-	
 	
 	
 	
