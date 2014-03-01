@@ -41,7 +41,6 @@ a:hover, a:active{
 	border-radius : 5px;
 	-moz-border-radius : 5px;
 	-webkit-border-radius : 5px;
-	
 }
 .mainHeader nav ul {
 	list-style: none;
@@ -80,6 +79,13 @@ a:hover, a:active{
 
 .content{
 	width: 70%;
+	float : left;
+}
+
+
+.reportContent{
+	/*background-color:#000305;*/
+	width: 100%;
 	float : left;
 }
 
@@ -158,7 +164,10 @@ a:hover, a:active{
 
 .mainFooter p{
 	width : 92%;
-	margin : 1% auto;
+	margin-top:1%;
+	margin-left:auto;
+	margin-right:auto;
+	/*margin : 1% auto;*/
 	color: #FFF;
 }
 
@@ -223,4 +232,20 @@ a:hover, a:active{
 
 }
 
+
+DIV.subtoc {
+	padding: 1em;
+	border: solid thin;
+	margin: 1em 0;
+	background: #ddd;
+}
+
+div.code {
+	width: 100%;
+	border: none;
+	background-color: #eee;
+}
+.reportImg{
+	border: solid thin;
+}
 
