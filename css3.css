@@ -1,0 +1,226 @@
+body{ /*basic style*/
+	color : #000305;
+	font-size : 87.5%; /* the base font is 14px*/ /*relative units */
+	font-family: Arial,"Liberation Sans",sans-serif;   /*Arial is a Windows font, therefore i supply different fonts.*/
+	line-height: 1.5;
+	text-align: left;
+	background-color:#CCCCCC;
+}
+
+a{
+	text-decoration:none; /*remove underline or other basic styles*/
+}
+
+.body{
+	margin: 0 auto;
+	width: 70%;
+	clear : both; /*no float*/
+}
+
+a:link, a:visited{
+	color:#CF5C3F;
+}
+
+a:hover, a:active{
+	background-color:#CF5C3F;
+	color:#FFF;
+	
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+}
+
+.mainHeader img{
+	width : 30%;
+	height: auto;
+	margin: 2% 0;
+}
+.mainHeader nav{
+	background-color:#666;
+	height:40px;
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+	
+}
+.mainHeader nav ul {
+	list-style: none;
+	margin : 0 auto;
+}
+.mainHeader nav ul li{
+	float : left;
+	display : inline;
+}
+.mainHeader nav a:link,.mainHeader nav a:visited{
+	color:#FFF;
+	display: inline-block;/*http://www.w3schools.com/cssref/pr_class_display.asp*/ /*http://designshack.net/articles/css/whats-the-deal-with-display-inline-block/*/
+	padding:10px 25px;
+	height: 20px;
+}
+
+.mainHeader nav a:hover, .mainHeader nav a:active,
+.mainHeader nav .active a:link, .mainHeader nav .active a:visited{
+	background-color:#CF5C3F;	
+	text-shadow: none;
+}
+
+.mainHeader nav ul li a{
+	/*line-height : 20%;*/
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+}
+.mainContent{
+	line-height : 25px;
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+	/*overflow:hidden;*/
+}
+
+.content{
+	width: 70%;
+	float : left;
+}
+
+.post-info{
+	font-style:italic;
+	color:#999;
+	font-size:85%;
+}
+
+
+.topcontent {
+	background-color: #FFF;
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+	padding : 3% 5%;
+	margin-top : 2%;
+}
+
+.bottomcontent{
+	background-color: #FFF;
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+	padding : 3% 5%;
+	margin-top : 2%;
+}
+
+.top-sidebar{
+	width : 21%;
+	float : left;
+	background-color: #FFF;
+	margin: 2% 0 2% 3%;
+	padding: 2% 3%;
+	
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+}
+
+.middle-sidebar{
+	width : 21%;
+	float : left;
+	background-color: #FFF;
+	margin: 0 0 2% 3%;
+	padding: 2% 3%;
+	
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+}
+
+.bottom-sidebar{
+	width : 21%;
+	float : left;
+	background-color: #FFF;
+	margin: 0 0 2% 3%;
+	padding: 2% 3%;
+	
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+}
+
+.mainFooter{
+	width:100%;
+	height:40px;
+	background-color:#666;
+	float:left;
+	margin: 1% auto;
+	
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+}
+
+.mainFooter p{
+	width : 92%;
+	margin : 1% auto;
+	color: #FFF;
+}
+
+@media only screen and (max-width: 480px)  and (min-width: 150px){
+	.body{
+		width: 90%;
+		font-size:95%;
+	}
+	.mainHeader img{
+		width : 100%;
+	}
+	.mainHeader nav{
+		height:160px;
+	}
+	.mainHeader nav ul {
+		/*height:100%;*/
+		padding-left:0;
+	}
+	.mainHeader nav ul li{
+		width:100%;
+		text-align:center;
+	}
+	.mainHeader nav a:link,.mainHeader nav a:visited{
+		padding:10px 25px;
+		display:block;
+	}
+
+	.content{
+		width: 100%;
+		float : left;
+		margin-top:2%;
+	}
+	.post-info{
+		display: none;
+	}
+	
+	.topcontent {
+		margin : 2% 0;
+		/*margin-bottom:2%;*/
+	}
+	
+	.bottomcontent{
+		margin : 2% 0;
+		margin-bottom:2%;
+		margin-top:4%;
+	}
+
+	.top-sidebar{
+		width : 94%;
+		margin : 2% 0;
+	}
+	.middle-sidebar{
+		width : 94%;
+		margin : 2% 0;
+	}
+	
+	.bottom-sidebar{
+		width : 94%;
+		margin : 2% 0;
+	}
+		
+
+}
+
+
