@@ -1,6 +1,6 @@
 body{ /*basic style*/
 	color : #000305;
-	font-size : 87.5%; /* the base font is 14px*/ /*relative units */
+	font-size : 87.5%; /* the base font is 16px*/ /*relative units */
 	font-family: Arial,"Liberation Sans",sans-serif;   /*Arial is a Windows font, therefore i supply different fonts.*/
 	line-height: 1.5;
 	text-align: left;
@@ -25,9 +25,9 @@ a:hover, a:active{
 	background-color:#CF5C3F;
 	color:#FFF;
 	
-	border-radius : 5px;
-	-moz-border-radius : 5px;
-	-webkit-border-radius : 5px;
+	border-radius : 0.4em;
+	-moz-border-radius : 0.4em;
+	-webkit-border-radius : 0.4em;
 }
 
 .mainHeader img{
@@ -38,9 +38,9 @@ a:hover, a:active{
 .mainHeader nav{
 	background-color:#666;
 	height:40px;
-	border-radius : 5px;
-	-moz-border-radius : 5px;
-	-webkit-border-radius : 5px;
+	border-radius : 0.4em;
+	-moz-border-radius : 0.4em;
+	-webkit-border-radius : 0.4em;
 }
 .mainHeader nav ul {
 	list-style: none;
@@ -65,15 +65,15 @@ a:hover, a:active{
 
 .mainHeader nav ul li a{
 	/*line-height : 20%;*/
-	border-radius : 5px;
-	-moz-border-radius : 5px;
-	-webkit-border-radius : 5px;
+	border-radius : 0.4em;
+	-moz-border-radius : 0.4em;
+	-webkit-border-radius : 0.4em;
 }
 .mainContent{
 	line-height : 25px;
-	border-radius : 5px;
-	-moz-border-radius : 5px;
-	-webkit-border-radius : 5px;
+	border-radius : 0.4em;
+	-moz-border-radius : 0.4em;
+	-webkit-border-radius : 0.4em;
 	/*overflow:hidden;*/
 }
 
@@ -98,18 +98,18 @@ a:hover, a:active{
 
 .topcontent {
 	background-color: #FFF;
-	border-radius : 5px;
-	-moz-border-radius : 5px;
-	-webkit-border-radius : 5px;
+	border-radius : 0.4em;
+	-moz-border-radius : 0.4em;
+	-webkit-border-radius : 0.4em;
 	padding : 3% 5%;
 	margin-top : 2%;
 }
 
 .bottomcontent{
 	background-color: #FFF;
-	border-radius : 5px;
-	-moz-border-radius : 5px;
-	-webkit-border-radius : 5px;
+	border-radius : 0.4em;
+	-moz-border-radius : 0.4em;
+	-webkit-border-radius : 0.4em;
 	padding : 3% 5%;
 	margin-top : 2%;
 }
@@ -121,9 +121,9 @@ a:hover, a:active{
 	margin: 2% 0 2% 3%;
 	padding: 2% 3%;
 	
-	border-radius : 5px;
-	-moz-border-radius : 5px;
-	-webkit-border-radius : 5px;
+	border-radius : 0.4em;
+	-moz-border-radius : 0.4em;
+	-webkit-border-radius : 0.4em;
 }
 
 .middle-sidebar{
@@ -133,9 +133,9 @@ a:hover, a:active{
 	margin: 0 0 2% 3%;
 	padding: 2% 3%;
 	
-	border-radius : 5px;
-	-moz-border-radius : 5px;
-	-webkit-border-radius : 5px;
+	border-radius : 0.4em;
+	-moz-border-radius : 0.4em;
+	-webkit-border-radius : 0.4em;
 }
 
 .bottom-sidebar{
@@ -145,9 +145,9 @@ a:hover, a:active{
 	margin: 0 0 2% 3%;
 	padding: 2% 3%;
 	
-	border-radius : 5px;
-	-moz-border-radius : 5px;
-	-webkit-border-radius : 5px;
+	border-radius : 0.4em;
+	-moz-border-radius : 0.4em;
+	-webkit-border-radius : 0.4em;
 }
 
 .mainFooter{
@@ -157,9 +157,9 @@ a:hover, a:active{
 	float:left;
 	margin: 1% auto;
 	
-	border-radius : 5px;
-	-moz-border-radius : 5px;
-	-webkit-border-radius : 5px;
+	border-radius : 0.4em;
+	-moz-border-radius : 0.4em;
+	-webkit-border-radius : 0.4em;
 }
 
 .mainFooter p{
@@ -238,14 +238,66 @@ DIV.subtoc {
 	border: solid thin;
 	margin: 1em 0;
 	background: #ddd;
+	
+	border-radius : 0.4em;
+	-moz-border-radius : 0.4em;
+	-webkit-border-radius : 0.4em;
+	border-color:#CF5C3F;
 }
 
-div.code {
+.code {
+	line-height: 1.1;
+	padding: 1em 1em;
+	
 	width: 100%;
 	border: none;
 	background-color: #eee;
+	
+	border-radius : 0.4em;
+	-moz-border-radius : 0.4em;
+	-webkit-border-radius : 0.4em;
+	border-color:#CF5C3F;
+	
+	
+	white-space: pre-wrap;       /* css-3 */
+	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 .reportImg{
 	border: solid thin;
+	border-color:#CF5C3F;
+	width:100%;
+	
 }
+.form{
+	width:100%;
+}
+.col-submit{
+	float:right;
+}
+.col1{
+	width:30%;
+}
+.col2{
+	width:70%;
+}
+.table{
+	width:90%;
+	margin-left:auto;
+	margin-right:auto;
+	border:1px solid #CCCCCC;
+}
+.input{
+	width:80%;
+}
+
+.video{
+	width:100%;
+	height:90%;
+}
+
+
+
 
