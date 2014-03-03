@@ -1,12 +1,23 @@
-if (addEventListener) addEventListener("load",loadFn,false);
-else attachEvent("onload", loadFn);
+if (addEventListener) addEventListener("load",allMyCode,false);
+else attachEvent("onload", allMyCode);
+
 
 // window.addEventListener("load",loadFn,false);
+function html5checking(){
+    var test_canvas = document.createElement("canvas"); //try and create sample canvas element
+    var canvascheck=(test_canvas.getContext)? true : false; //check if object supports getContext() method, a method of the canvas element
+    if(canvascheck){
+        document.getElementById('html5checker_my').style.display='none';
+    }else{
+        alert("Dear user, your browser does not support html5, please use Chrome for this game. Thanks!");
+    }
+}
 
-//function allMyCode(){//TODO open this before submit
+function allMyCode(){//TODO open this before submit
 	"use strict";
+	html5checking();
 	
-	//loadFn(); //TODO open this before submit
+	loadFn(); //TODO open this before submit
 	
 	var canvasBg;
 	var canBgCtx;
@@ -148,8 +159,8 @@ else attachEvent("onload", loadFn);
 	var bgDrawX2 = bgWidth;
 	
 	function drawDynamicBg(){
-	    bgDrawX1 -= 5;
-	    bgDrawX2 -= 5;
+	    bgDrawX1 -= 1;
+	    bgDrawX2 -= 1;
 	    if (bgDrawX1 <= -bgWidth) {
 	        bgDrawX1 = bgWidth;
 	    } else if (bgDrawX2 <= -bgWidth) {
@@ -915,4 +926,4 @@ else attachEvent("onload", loadFn);
 	}
 
 
-//}//TODO open this before submit
+}//TODO open this before submit

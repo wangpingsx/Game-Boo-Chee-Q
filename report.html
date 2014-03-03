@@ -74,7 +74,7 @@ This report explains the client project which includes a XHTML5 webpage, a HTML5
 			</ol>
 			<li><a href="#h-1-4">Video</a></li>
 		</ol>
-		<li><a href="#h-2">Game (spent 100 hours)</a></li>
+		<li><a href="#h-2">Game (spent 200 hours)</a></li>
 		<ol>
 			<li><a href="#h-2-1">Drawings</a></li>
 			<li><a href="#h-2-2">XHTML5</a></li>
@@ -287,7 +287,7 @@ This project also embeded a video for demostrating video capbility:
 &lt;iframe class="video" src="//www.youtube.com/embed/DhLNO3XlbJs" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
 </pre> 
 
-<h2><a name="h-2">2,</a> Game (spent 100 hours)</h2>
+<h2><a name="h-2">2,</a> Game (spent 200 hours)</h2>
 <h3><a name="h-2-1">2.1,</a> Drawings</h3>
 <h4>Tutorials:</h4>
 Learnt how to draw cartoon from a <a href="https://play.google.com/store/apps/details?id=com.cartoonsdraw.planes&hl=en">tutorialst</a><br/>
@@ -329,20 +329,298 @@ Colours are filled by GIMP. Sunshine created by "smudge tool". Airbrush be used 
 <img src="3_pic_12.png" class="reportImg"/>
 
 <h3><a name="h-2-2">2.2,</a> XHTML5</h3>
-
-
-
+The game section of this project was mainly using html5 canvas for game animation. But in Html aspect, the only code is:
+<pre class="code">
+	&lt;div id="inner" class="inner"&gt;
+	&lt;/div&gt;
+</pre>
+The Html5 canvas was not here but located in javascript file (will be explained in javascript section). 
+The purpose of the design was making the game easily to be shared. To do that, users can only copy this html and embed the game.js. 
 <h3><a name="h-2-3">2.3,</a> Javascript</h3>
+
+<h4>Mechanism</h4>
+The mechanism of this html5 game was "canvas drawing" + "looping". Regarding the looping principle, it will be introduced in detail in later sections.<br />
+Five canvases were created for drawing different characters, such as jet, enemies, background, bullet, explosing and game score.
+They were all transparent and overlaping with each others.
+This is the code of canvas drawing:
+<pre class="code">
+anJetCtx.drawImage(bgImage,this.srcX,this.srcY,this.imageWidth,this.imageheight,this.targetX,this.targetY,this.objWidth,this.objHeight);
+</pre>
+This function was used to draw a segment of a picture into a canvas. The area of segment was specificed by srcX and srcY.
+So, all animataion characters can be put into a single image. There were classes for ach characters and signed with different srcX and srcY.
+This design matched the Object-Oriented programming.
+
+
+<h4>Touch screen for tablet</h4>
+To support touch screen devices, html and javascript were both changed:<br />
+Adding viewport in meta. Meanwhile, adding touching event listener. 
+All that solutions were learnt from an online <a href="http://www.onlywebpro.com/2012/01/28/game-development-mouse-and-touch-event-detection/">post</a>.
+
+
+
+<h4>Social network sharing</h4>
+<img src="4_game_2.png" class="reportImg"/>
+To make this project more popular, social network connectivity was added into this project.
+However, this ability was not working in the SAFE. It was working well in local environment and Google Cloud (http://1.boocheeq.appspot.com/game.html).
+<img src="4_game_3.png" class="reportImg"/>
+All relative information were learnt from :<br/>
+http://www.practicalecommerce.com/articles/3817-Top-10-Social-Sharing-Buttons-for-Your-Website<br/>
+http://www.sharethis.com/<br/>
+
+<h4>Event</h4>
+This project adopted adaptable event solution:
+<pre class="code">
+if (addEventListener) addEventListener("load",allMyCode,false);
+else attachEvent("onload", allMyCode);
+// window.addEventListener("load",loadFn,false);
+</pre>
+<h4>Single javascript function</h4>
+All codes were located in "allMyCode" function, the advatage was if variables or functions' name were conflict with other javascripts.
+However, that would disable the ability of checking variables in Google chrome. 
+
+<h4>Innerhtml</h4>
+As this report mentioned above, to make this game easliy to be shared, all htmls were located in javascript section.
+Innterhtml was used to add html tags into main html file. However, it was not safe solution. Therefore "<a href="// http://www.optimalworks.net/resources/betterinnerhtml/">BetterInnerHTML</a>" was adopted.
+<pre class="code">
+BetterInnerHTML(document.getElementById("inner"), 
+	'&lt;canvas id="canvasBg" class="canvasBg" width="800" height="500"&gt;&lt;/canvas&gt;'+ 
+	'&lt;canvas id="canvasJet" class="canvasJet" width="800" height="500"&gt;&lt;/canvas&gt;' +
+	'&lt;canvas id="canvasEnemy" class="canvasEnemy" width="800" height="500"&gt;&lt;/canvas&gt;' + 
+	'&lt;canvas id="canvasText" class="canvasText" width="800" height="500"&gt;&lt;/canvas&gt;' + 
+	'&lt;canvas id="canvasBullet" class="canvasBullet" width="800" height="500"&gt;&lt;/canvas&gt;'
+);	
+</pre>
+
+<h4>Object-Oriented programming</h4>
+Javascript is not a Object-Oriented language. Two Object-Oriented solutions were adopted in this project:
+<pre class="code">
+function Enemy() {
+	this.gameWidth = canvasBg.width;
+	this.gameHeight = canvasBg.height;
+}
+Enemy.prototype.draw = function(){
+}	
+
+function createANewBullet(){
+	var item;
+	if(Object){
+		item = Object.create(Bullet);
+	}else{
+		item = new Bullet();
+	}
+	item.init();
+	return item;
+}
+</pre>
+
+<pre class="code">
+var Explosion ={
+	srcX : 0,
+	srcY : 0,
+	
+	init : explosionInit,
+	draw : explosionDraw
+};
+function explosionInit(){
+}
+</pre>
+Both solutions were adobted in this project. but the first soution was highly recommended.
+
+
+<h4>Game level</h4>
+The game level system relied on game score system. Meanwhile it will affect the difficulty.
+<pre class="code">
+function updateGameLevel(){
+	gameLavel = jet1.score/100;
+	if(gameLavel > 0){
+		spawnAmount = gameLavel; 
+	}	
+}	
+</pre>
+The gamelevel will be increased once the game score increases 100.<br />
+Gamelevel raising will cause this game spawn more enemies. Meanwhile, Enemies' moving path will be more complex -- zpath.
+<pre class="code">
+if(gameLavel > 3){
+	if(this.ifZpathX){
+		this.score = this.score_zpath;
+		this.zPathX();
+	}
+}
+</pre>
+
+<h4>Jet Zpath Moving</h4>
+Zpath moving was used to make enemies moving zigzag.
+The game will radomly spawning enemies from the right side of the game. the spawning position was random. 
+The zpath moving range also random. (for more detail please see the comments below)
+
+<pre class="code">
+Enemy.prototype.zPathX = function(){
+	if(!this.zStepY){
+		this.zStepY = zStepY;
+		if(returnNChance(50)){ // randomly generate the init direction
+			this.zStepY = 0 - this.zStepY;
+		}
+	}
+	
+	if(!this.zstepYRangeA){//generate a radom moving range.  (y-y/2 -- y + y/2)
+		if(this.targetY &lt; this.objHeight *3){//to avoid shaking. if the plane locates at the top of screen, then make it zmoving from top to botton.
+			this.zstepYRangeA = this.flyingYRangeA;
+			this.zstepYRangeZ = this.flyingYRangeZ;
+		}else{
+			this.zstepYRangeA = this.targetY - Math.floor(this.targetY/2);
+			this.zstepYRangeZ = this.targetY + Math.floor(this.targetY/2);
+			if(this.zstepYRangeA &lt; 0){
+				this.zstepYRangeA = 0;
+			}
+			if(this.zstepYRangeZ &gt; this.flyingYRangeZ){
+				this.zstepYRangeZ = this.flyingYRangeZ;
+			}
+		}
+	}
+	
+	this.targetY = this.targetY - this.zStepY;
+	
+	if(this.targetY &lt; this.zstepYRangeA || this.targetY &gt;this.zstepYRangeZ ){//change direction.
+		this.zStepY = 0 - this.zStepY;
+	}
+	
+};	
+</pre>
+<h4>Moving background</h4>
+This game offered a constantly moving background by looping the background picture.
+Two copies were moving simultaneously one after another. 
+<pre class="code">
+function drawDynamicBg(){
+    bgDrawX1 -= 5;
+    bgDrawX2 -= 5;
+    if (bgDrawX1 &lt;= -bgWidth) {
+        bgDrawX1 = bgWidth;
+    } else if (bgDrawX2 &lt;= -bgWidth) {
+        bgDrawX2 = bgWidth;
+    }
+	realDrawGameBg(bgImage);
+}
+function realDrawGameBg(bgImagex){
+	var bgImage = bgImagex;
+	var srcX = 0;
+	var srcY = 0;
+	var targetX = 0;
+	var targetY = 0;
+	
+	var gameWidth = canvasBg.width;
+	var gameHeight = canvasBg.height;
+	var imageWidth = bgWidth;
+	var imageheight = 500;
+	
+    canBgCtx.clearRect(0, 0, gameWidth, gameHeight);
+	
+	canBgCtx.drawImage(bgImage,srcX,srcY,imageWidth,imageheight,bgDrawX1,targetY,imageWidth,gameHeight);		
+	canBgCtx.drawImage(bgImage,srcX,srcY,imageWidth,imageheight,bgDrawX2,targetY,imageWidth,gameHeight);
+}
+</pre>
+
+<h4>Looping</h4>
+There were two looping solutions: <br />
+Animationframe:
+<pre class="code">
+var requestAnimFrame =  window.requestAnimationFrame ||
+                        window.webkitRequestAnimationFrame || // for webkit
+                        window.mozRequestAnimationFrame || // for firefox
+                        window.msRequestAnimationFrame ||  // for ie
+                        window.oRequestAnimationFrame;	 // for opera
+function loop() {
+    requestAnimFrame(loop);
+}
+</pre>
+Interval:
+<pre class="code">
+function startShooting(){
+	cleanBulletInterval();
+	bulletInterval = setInterval(function(){shootxxx()},bulletFps);
+}
+
+function cleanBulletInterval(){
+	clearInterval(bulletInterval);
+}
+</pre>
+
+<h4>Sprite</h4>
+For saving space, all pictures were integrated into one sprite picture.
+
+<h4>Memory Management</h4>
+As a shotting game, enemies and bullets were infinite. The memory issue was a big challenge for this project.
+This project adopted two memory management solutions:<br />
+Object dispose (remove enemies from enemies list):
+<pre class="code">
+function disposeEnimy (enimy){
+	enemies.splice(enemies.indexOf(enimy),1);
+	totalEnemies--;
+}	
+</pre>
+Object recycling 
+<pre class="code">
+if(bullet.targetY > bullet.gameWidth){
+	bullet.recycle();
+}
+function bulletRecycle(){
+	this.targetY = -20;
+}	
+</pre>
+If bullet was moved out of the game boundary, it will be recycled. 
+The recycled bullet will be moved to a waiting area. 
+
+<h4>Auto scale</h4>
+This game was designed for auto scale to fit different screen sizes.
 
 
 <h2><a name="h-3">3,</a>Development Environment</h2>
 This project offers mobile ability. To test this project in mobile devices, this project was uploaded into the cloud. 
 Codenvy is a cloud based IDE which supports html and javascript development.
 Meanwhile, Codenvy supports web based IDE. Developers can developing by browsers anytime anywhere.
-GitHub can synchronize the source code  
+GitHub can synchronize the source code between local developement enviroment and online IDE.
 <img src="3_pic_13.png" class="reportImg"/>
 
+<h2><a name="h-4">4,</a>Testing</h2>
+This project was tested by IE6, Firefox, Safari, Chrome and Opera. Because there are several new CSS features such as coner radius are 
+not supported by IE6 but the layout and content can work as normal. <br />
+Regarding the Html5 canvas, old browsers do not supprt, such IE6. a notification will display on the web page if Html5 canvas is not supprted.
+There are several solutions for checking Html5 canvas supporting.
+<pre class="code">
+var canvasEl = document.createElement('canvas'); //create the canvas object
+if(!canvasEl.getContext) //if the method is not supported, i.e canvas is not supported
+{ 
+  document.write("HTML5 Canvas Not Supported By Your Browser");
+  return;
+}
+</pre>
+<pre class="code">
+if (Modernizr.canvas) {
+  // let's draw some shapes!
+} else {
+  // no native canvas support available :(
+}    
+</pre>
+ 
+However, above solutions were failed the testing in IE6. All js were collapsed. Alternatively, the solution of this project was that adding a Label tag
+to notice users the current brower does not support Html5 canvas, if it supports Html5 canvas, the Label tag will be removed.
+<pre class="code">
+&lt;label id="html5checker_my"&gt; Dear user, your browser does not support html5, please use Chrome for this game. Thanks!&lt;/label&gt;
+function html5checking(){
+    var test_canvas = document.createElement("canvas"); //try and create sample canvas element
+    var canvascheck=(test_canvas.getContext)? true : false; //check if object supports getContext() method, a method of the canvas element
+    if(canvascheck){
+        document.getElementById('html5checker_my').style.display='none';
+    }else{
+        alert("Dear user, your browser does not support html5, please use Chrome for this game. Thanks!");
+    }
+}         
+</pre>
+One thing was worth noting, this code segement used javascript control css style.
 
+<img src="5_test_ie_1.png" class="reportImg"/>
+<img src="5_test_ie_2.png" class="reportImg"/>
+<img src="5_test_1.png" class="reportImg"/>
+Opera has issue with Html5 canvas, so it failed on game testing.
 
         			</content>
         		</article>

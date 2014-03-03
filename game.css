@@ -24,7 +24,7 @@
 	 
 	display:block;
 	background:#CCCCCC;
-	margin: 100px auto 0px; /*for margin*/
+	margin: 10px auto 0px; /*for margin*/
 	
 	min-width: 400px;
 	min-height: 250px;
@@ -43,4 +43,8 @@
 	display:block;
 	/*no background for transparent*/
 	margin: -500px auto 0px; /*for margin*/
+}
+
+#html5checker_my{
+    color: #999999;
 }
