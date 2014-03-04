@@ -17,6 +17,7 @@
 .canvasBg{
 	/*height: 80%;
 	width: 80%;*/   
+	
 	/*this line and height width settings in .canvasJet are going to make the game auto fit browser's size
 	 * however, I can not control the margin of canvasJet, to make the jet to display just over this canvas.
 	 * currently the margin is hard coded. i will try to fix this latter.
@@ -40,6 +41,7 @@
 .canvasJet,.canvasEnemy,.canvasBullet,.canvasText{
 	/*height: 80%;
 	width: 80%;*/
+	 
 	display:block;
 	/*no background for transparent*/
 	margin: -500px auto 0px; /*for margin*/

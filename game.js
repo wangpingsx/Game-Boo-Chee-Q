@@ -119,6 +119,8 @@ function allMyCode(){//TODO open this before submit
 			'<canvas id="canvasEnemy" class="canvasEnemy" width="800" height="500"></canvas>' + 
 			'<canvas id="canvasText" class="canvasText" width="800" height="500"></canvas>' + 
 			'<canvas id="canvasBullet" class="canvasBullet" width="800" height="500"></canvas>'
+			
+			
 		);
 		
 		canvasBg = document.getElementById("canvasBg");
@@ -868,7 +870,7 @@ function allMyCode(){//TODO open this before submit
 	 
 	function touchUp(e) {
 	    touchIsDown = 0;
-	    showPos();
+	    processPos();
 	}
 	 
 	function mouseDown(e) {
@@ -885,17 +887,17 @@ function allMyCode(){//TODO open this before submit
         e.preventDefault();
 	    touchX = e.pageX - touchCanvas.offsetLeft;
 	    touchY = e.pageY - touchCanvas.offsetTop;
-	    showPos();
+	    processPos();
 	}
 	 
 	function touchXY(e) {
 	    e.preventDefault();
 	    touchX = e.targetTouches[0].pageX - touchCanvas.offsetLeft;
 	    touchY = e.targetTouches[0].pageY - touchCanvas.offsetTop;
-	    showPos();
+	    processPos();
 	}
 	 
-	function showPos() {
+	function processPos() {
 	    // ctx.font="12px Arial";
 	    // ctx.textAlign="center";
 	    // ctx.textBaseline="middle";

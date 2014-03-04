@@ -51,24 +51,24 @@
         				<p class="post-info">This post is written by Peter Wang</p>
         			</footer>
         			<content>
-        				<form name="input" action="xx.html" method="get" class="form" data-parsley-validate>
+        				<form name="input" action="params.html" method="get" class="form">
 	        				<table class="table">
 	        					<tr>
 	        						<td class="col1">Name *:</td>
-	        						<td class="col2"><input type="text" class="input" data-parsley-trigger="change" required/></td>
+	        						<td class="col2"><input type="text" name="name" class="input" data-parsley-trigger="change"/></td>
 	        					</tr>
 	        					<tr>
 	        						<td class="col1">Password*:</td>
-	        						<td class="col2"><input type="password" class="input" data-parsley-trigger="change" required/></td>
+	        						<td class="col2"><input type="password" name="password" class="input" data-parsley-trigger="change"/></td>
 	        					</tr>
 	        					<tr>
 	        						<td class="col1">Email*:</td>
-	        						<td class="col2"><input type="email" class="input" data-parsley-trigger="change" required/></td>
+	        						<td class="col2"><input type="email" name="email" class="input" data-parsley-trigger="change"/></td>
 	        					</tr>
 	        					<tr>
 	        						<td class="col1">Age:</td>
 	        						<td class="col2">
-										<select>
+										<select name="age">
 										  <option value="10">10-20</option>
 										  <option value="20">20-30</option>
 										  <option value="30">30-40</option>
@@ -84,15 +84,15 @@
 	        					</tr>
 	        					<tr>
 	        						<td class="col1">Gender:</td>
-	        						<td class="col2"><input type="radio" name="sex" value="male">Male<input type="radio" name="sex" value="female">Female</td>
+	        						<td class="col2"><input type="radio" name="sex" value="male"/>Male<input type="radio" name="sex" value="female"/>Female</td>
 	        					</tr>
 	        					<tr>
 	        						<td class="col1">Hobby:</td>
-	        						<td class="col2"><input type="checkbox" name="hobby" value="tv">Tv<input type="checkbox" name="hobby" value="gym">gym <input type="checkbox" name="hobby" value="movie">Movie</td>
+	        						<td class="col2"><input type="checkbox" name="hobby" value="tv"/>Tv<input type="checkbox" name="hobby" value="gym"/>gym <input type="checkbox" name="hobby" value="movie"/>Movie</td>
 	        					</tr>
 	        					<tr>
 	        						<td class="col1"></td>
-	        						<td class="col2 "><input type="submit" value="Submit" class="col-submit "></td>
+	        						<td class="col2 "><input type="submit" value="Submit" class="col-submit "/></td>
 	        					</tr>
 	        				</table>
         				</form>
@@ -107,7 +107,7 @@
         				<p class="post-info">This post is written by Peter Wang</p>
         			</footer>
         			<content>
-        				<iframe class="video" src="//www.youtube.com/embed/DhLNO3XlbJs" frameborder="0" allowfullscreen></iframe>
+        				<iframe class="video" src="//www.youtube.com/embed/DhLNO3XlbJs" frameborder="0"></iframe>
         				<p>
         					The upcoming release of Mobile Firefox (Fennec) 1.1 
         					Previous versions of Fennec supported the width, height, 
