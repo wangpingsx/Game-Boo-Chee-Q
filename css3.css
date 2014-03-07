@@ -273,6 +273,9 @@ DIV.subtoc {
 	white-space: -o-pre-wrap;    /* Opera 7 */
 	word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
+.comment{
+    color:#CCCCCC;
+}
 .reportImg{
 	border: solid thin;
 	border-color:#CF5C3F;

@@ -14,6 +14,14 @@
 		<!--[if lt IE 9]>
         	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
+        <!--[if lt IE 9]>
+            <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+        <![endif]-->
+        
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
         <!-- -->
         <script type="text/javascript">var switchTo5x=true;</script>
 		<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
@@ -49,7 +57,11 @@ This report explains the client project which includes a XHTML5 webpage and a XH
 I haven't do CSS and Javascript developing before and game developing aslo. This is a great chance for me to learn these technologies.
 
 In order to learn those new languages, I haven't use any third party libraries and frameworks. All logic and styles were managed by Javascript and CSS only, and all codes were 
-developed by myself.<br/>
+developed by myself.<br/><br/>
+
+This application was developed by Eclipse, Inscape and GIMP.<br/>
+
+
 
 <div class="subtoc">
 	<p>Contents</p>
@@ -187,10 +199,10 @@ The CSS inheritance mechanism was expected work as this:
    border-radius: 8px;
 }
 #header {  
-  .rounded_corners;          /* header inherits rounded corners styles */
+  .rounded_corners;          <span class="comment">/* header inherits rounded corners styles </span>
 }
 #footer {
-  .rounded_corners;          /* header inherits rounded corners styles */
+  .rounded_corners;          <span class="comment">/* header inherits rounded corners styles </span>
 } 
 </pre>
 
@@ -219,7 +231,7 @@ After considering of all solutions, this project didn't adopt any of them. The f
 
 <h4><a name="h-1-2-b">1.2.2</a> Layout and mobile devices consideration</h4>
 As this report mentioned above, CSS was used for controling the layout of this project. 
-This project was designed for adapting different size of browsers, below diagram shows the layout design:
+This project was designed for adapting different size of browsers, below diagram shows the layout design (fluid layout):
 <img src="1_css_0.png" class="reportImg"/>
 The thinner layout was designed for smaller screen devices such as mobiles.
 
@@ -244,7 +256,7 @@ For example, below styles were used for making navigations to display vertically
 		height:160px;
 	}
 	.mainHeader nav ul {
-		/*height:100%;*/
+		<span class="comment">/*height:100%;</span>
 		padding-left:0;
 	}
 	.mainHeader nav ul li{
@@ -284,11 +296,11 @@ Px is a commonly used units on web page design. Px depends on the screen's resol
 <h4><a name="h-1-2-e">1.2.5</a>Main CSS styles:</h4>
 
 <pre class="code">
-background-color: #FFF;          /*background color*/
-border-radius : 5px;            /*border coner radius*/
--moz-border-radius : 5px;       /* for firefox*/
--webkit-border-radius : 5px;     /* for webkit*/
-padding : 3% 5%;                /* padding top=bottom
+background-color: #FFF;          <span class="comment">/*background color</span>
+border-radius : 5px;            <span class="comment">/*border coner radius</span>
+-moz-border-radius : 5px;       <span class="comment">/* for firefox</span>
+-webkit-border-radius : 5px;     <span class="comment">/* for webkit</span>
+padding : 3% 5%;                <span class="comment">/* padding top=bottom</span>
 margin-top : 2%;
 </pre>
 Abouve CSS were used to control styles of corner radius, margins and paddings.
@@ -299,44 +311,44 @@ Margin was use to control the space out of the boundary.
 Margin and padding both accept below settings:
 <pre class="code">
 margin:10px 5px 15px 20px;
-    /*
+    <span class="comment">/*
         top margin is 10px
         right margin is 5px
         bottom margin is 15px
         left margin is 20px
-    */
+    </span>
 
 margin:10px 5px 15px;
-    /*
+    <span class="comment">/*
         top margin is 10px
         right and left margins are 5px
         bottom margin is 15px
-    */
+    </span>
 margin:10px 5px;
-    /*
+    <span class="comment">/*
         top and bottom margins are 10px
         right and left margins are 5px
-    */
+    </span>
 margin:10px;
-    /*
+    <span class="comment">/*
         all four margins are 10px
-    */
+    </span>
 </pre>
 
 <pre class="code">
-padding-top:2em;          /*Specific top padding */
-padding-left:2em;         /*Specific left padding */
-padding-right:2em;        /*Specific right padding */
-padding-bottom,:2em;      /*Specific bottom padding */
+padding-top:2em;          <span class="comment">/*Specific top padding </span>
+padding-left:2em;         <span class="comment">/*Specific left padding </span>
+padding-right:2em;        <span class="comment">/*Specific right padding </span>
+padding-bottom,:2em;      <span class="comment">/*Specific bottom padding </span>
 </pre>
 
 Regarding Font, below are the global settings for text styles. 
 <pre class="code">
- body{                         /*basic style*/
-	color : #000305;      /*text colour*/
-	font-size : 87.5%;    /* the base font is 14px*/ /*relative units */
+ body{                         <span class="comment">/*basic style</span>
+	color : #000305;      <span class="comment">/*text colour</span>
+	font-size : 87.5%;    <span class="comment">/* the base font is 14px</span> <span class="comment">/*relative units </span>
 	font-family: Arial,"Liberation Sans",sans-serif;   
-	                     /*Arial is a Windows font, therefore i supply different fonts.*/
+	                     <span class="comment">/*Arial is a Windows font, therefore i supply different fonts.</span>
 	line-height: 1.5;
 	text-align: left;
 	background-color:#CCCCCC;
@@ -427,7 +439,7 @@ Colours were filled by GIMP. Sunshine was created by "smudge tool". Airbrush was
 <img src="3_pic_12.png" class="reportImg"/>
 
 <h3><a name="h-2-2">2.2,</a> XHTML5</h3>
-HTML5 canvas was used for game animation. But in HTML aspect, the only code is:
+HTML5 canvas was used for game animation. But in the HTML file, the only code is:
 <pre class="code">
 	&lt;div id="inner" class="inner"&gt;
 	&lt;/div&gt;
@@ -474,7 +486,7 @@ This project adopted adaptable event solution:
 <pre class="code">
 if (addEventListener) addEventListener("load",allMyCode,false);
 else attachEvent("onload", allMyCode);
-// window.addEventListener("load",loadFn,false);
+<span class="comment">// window.addEventListener("load",loadFn,false);</span>
 </pre>
 <h4><a name="h-2-3-d-2">2.3.4.2</a> Single Javascript Function</h4>
 All codes were located in "allMyCode" function, the advatage was if variables or functions' name were conflict with other Javascripts "moudles".
@@ -497,7 +509,7 @@ BetterInnerHTML(document.getElementById("inner"),
 By default, Javascript is not a Object-Oriented language, but it can be implimented by somehow. There are several different ways to achive that. 
 To practice Javascript Object-Oriented programming (OOP), this project used two ways to do OOP in Javascript. 
 <pre class="code">
-//---------prototype based
+<span class="comment">//---------prototype based</span>
     
 function Enemy() {
 	this.gameWidth = canvasBg.width;
@@ -553,7 +565,7 @@ function createANewBullet(){
 
 
 <h4><a name="h-2-3-f">2.3.6</a> Game level</h4>
-The game level system relied on game score system. Meanwhile it will affect the difficulty.
+The game level system relied on the game score system. Meanwhile it affected the game difficulty.
 <pre class="code">
 function updateGameLevel(){
 	gameLavel = jet1.score/100;
@@ -562,8 +574,8 @@ function updateGameLevel(){
 	}	
 }	
 </pre>
-The gamelevel will be increased once the game score increases 100.<br />
-Gamelevel raising will cause this game spawn more enemies. Meanwhile, Enemies' moving path will be more complex -- zpath.
+The game level will be increased when the game score increases 100.<br />
+Gamelevel raising will cause the game spawns more enemies. Meanwhile, Enemies' moving path will be more complex -- zpath.
 <pre class="code">
 if(gameLavel > 3){
 	if(this.ifZpathX){
@@ -575,24 +587,25 @@ if(gameLavel > 3){
 
 <h4><a name="h-2-3-g">2.3.7</a> Jet Zpath Moving</h4>
 Zpath moving was used to make enemies moving zigzag.
-The game will radomly spawning enemies from the right side of the game. the spawning position was random. 
-The zpath moving range also random. (for more detail please see the comments below)
+The game will radomly spawning enemies from the right side of the game stage. The spawning position was random. 
+The zpath moving range was also random. (for more detail please see the comments below)
 
 <pre class="code">
 Enemy.prototype.zPathX = function(){
 	if(!this.zStepY){
 		this.zStepY = zStepY;
-		if(returnNChance(50)){ // randomly generate the init direction
+		if(returnNChance(50)){ <span class="comment">// randomly generate the init direction</span>
 			this.zStepY = 0 - this.zStepY;
 		}
 	}
 	
-	if(!this.zstepYRangeA){//generate a radom moving range.  (y-y/2 -- y + y/2)
-		if(this.targetY &lt; this.objHeight *3){//to avoid shaking. if the plane locates at the top of screen, then make it zmoving from top to botton.
+	if(!this.zstepYRangeA){         <span class="comment">//generate a random moving range.  (y-y/2 -- y + y/2)</span>
+		if(this.targetY &lt; this.objHeight *3){
+		    <span class="comment">//to avoid shaking. if the plane locates at the top of screen, then make the range from the top of screen to the botton.</span>
 			this.zstepYRangeA = this.flyingYRangeA;
 			this.zstepYRangeZ = this.flyingYRangeZ;
 		}else{
-			this.zstepYRangeA = this.targetY - Math.floor(this.targetY/2);
+			this.zstepYRangeA = this.targetY - Math.floor(this.targetY/2);    <span class="comment">// the moving range is from currentY - currentY to currentY + currentY/2</span>
 			this.zstepYRangeZ = this.targetY + Math.floor(this.targetY/2);
 			if(this.zstepYRangeA &lt; 0){
 				this.zstepYRangeA = 0;
@@ -605,22 +618,31 @@ Enemy.prototype.zPathX = function(){
 	
 	this.targetY = this.targetY - this.zStepY;
 	
-	if(this.targetY &lt; this.zstepYRangeA || this.targetY &gt;this.zstepYRangeZ ){//change direction.
+	if(this.targetY &lt; this.zstepYRangeA || this.targetY &gt;this.zstepYRangeZ ){ <span class="comment">//zigzag in the moving range.  //change direction.</span>
 		this.zStepY = 0 - this.zStepY;
 	}
 	
-};	
+};
+
+function returnNChance(n){ <span class="comment">//my random function.</span>
+    if(n &gt; 100){
+        alert("returnNChance cannot bigger than 100");
+    }
+    return Math.floor(Math.random() *100) &lt; n;
+}	
 </pre>
 <h4><a name="h-2-3-h">2.3.8</a> Moving background</h4>
-This game offered a constantly moving background by looping the background picture.
-Two copies were moving simultaneously one after another. 
+This game offered a constantly moving background by looping the background image.
+Two copies of background images were moving simultaneously one after another. 
 <pre class="code">
+var bgDrawX1 = 0;   <span class="comment">//the first copy located at the left boundary,</span>
+var bgDrawX2 = bgWidth; <span class="comment">// the second copy just located at the rear of the first image</span>
 function drawDynamicBg(){
-    bgDrawX1 -= 5;
+    bgDrawX1 -= 5;  <span class="comment">//moving left</span>
     bgDrawX2 -= 5;
-    if (bgDrawX1 &lt;= -bgWidth) {
+    if (bgDrawX1 &lt;= -bgWidth) {  <span class="comment">//if it moved out of the boundary.</span>
         bgDrawX1 = bgWidth;
-    } else if (bgDrawX2 &lt;= -bgWidth) {
+    } else if (bgDrawX2 &lt;= -bgWidth) {  <span class="comment">//if it moved out of the boundary.</span>
         bgDrawX2 = bgWidth;
     }
 	realDrawGameBg(bgImage);
@@ -649,10 +671,10 @@ There were two looping solutions: <br />
 Animationframe:
 <pre class="code">
 var requestAnimFrame =  window.requestAnimationFrame ||
-                        window.webkitRequestAnimationFrame || // for webkit
-                        window.mozRequestAnimationFrame || // for firefox
-                        window.msRequestAnimationFrame ||  // for ie
-                        window.oRequestAnimationFrame;	 // for opera
+                        window.webkitRequestAnimationFrame || <span class="comment">// for webkit</span>
+                        window.mozRequestAnimationFrame || <span class="comment">// for firefox</span>
+                        window.msRequestAnimationFrame ||  <span class="comment">// for ie</span>
+                        window.oRequestAnimationFrame;	 <span class="comment">// for opera</span>
 function loop() {
     requestAnimFrame(loop);
 }
@@ -669,14 +691,19 @@ function cleanBulletInterval(){
 }
 </pre>
 
+Both of them were implemented in this project, but the first solution was recommended. 
+Because the first solution was more efficent, it folllowed the broswer's animation frame.
+
 <h4><a name="h-2-3-j">2.3.10</a> Sprite</h4>
-All pictures were integrated into one sprite picture. The main purpose of this mergining was less the network transactions to lower
-the network loading failed risk. Meanwhile, all Javascript were waiting for assets loading. 
-It was hard to monitor all pictures loading progress. One picture was much easier to handle.
+All pictures were integrated into one sprite picture. 
+The main purpose of this mergining was to reduce the network transactions.
+and lower the network loading failed risk. 
+Meanwhile, the whole program was waiting for assets loading. 
+It was hard to monitor all pictures loading progresss. One picture was much easier to handle.
 
 
 <h4><a name="h-2-3-k">2.3.11</a> Mouse event handling</h4>
-There were several mouse event handlers for canvas in this project. the aim of those handlers were:
+There were several mouse event handlers of canvas in this project. the aims of these handlers were:
 "click to start game", "drag for moving jet", "touch for moving jet" and "key down for moving jet".
 <pre class="code">
 touchCanvas.addEventListener("mousedown",mouseDown, false);
@@ -684,14 +711,14 @@ touchCanvas.addEventListener("mousemove",mouseXY, false);
 touchCanvas.addEventListener("touchstart", touchDown, false);
 touchCanvas.addEventListener("touchmove", touchXY, true);
 touchCanvas.addEventListener("touchend", touchUp, false);    
-function mouseXY(e) {
+function mouseXY(e) { <span class="comment">//handler</span>
     e.preventDefault();
     touchX = e.pageX - touchCanvas.offsetLeft;
     touchY = e.pageY - touchCanvas.offsetTop;
     processPos();
 }
      
-function processPos() {
+function processPos() {<span class="comment">// control jet's position</span>
      if(touchIsDown ){
         if(!touchLockingJet){
             var left = jet1.targetX;
@@ -710,21 +737,24 @@ function processPos() {
      }
 }
 </pre>
-e.preventDefault(); was used for blocking the default event handler. For example, "touchmove" would only able to move the jet on the canvas, but no to scroll the web page.<br/>
+e.preventDefault(); was used for blocking the default event handler. For example, "touchmove" would only able to move the jet on the canvas, but the system handler to scroll the web page was blocked.<br/>
 processPos function was used to adjust jet location according to touchX and touchY.
 
 
 
 <h4><a name="h-2-3-l">2.3.12</a> Memory Management</h4>
-As a shotting game, enemies and bullets were infinite. The memory issue was a big challenge for this project.
+As a shotting game, enemies and bullets were infinite. 
+The memory issue was a big challenge for this project.
 This project adopted two memory management solutions:<br />
-<h5>Object dispose (remove enemies from enemies list):</h5>
+<h5>Object disposing (remove enemies from enemies list):</h5>
 <pre class="code">
 function disposeEnimy (enimy){
 	enemies.splice(enemies.indexOf(enimy),1);
 	totalEnemies--;
 }	
 </pre>
+Once the enimy jets moved out of the game stage, it will be removed from enimy list, 
+the memory fo this enimy will be released automatice by the browser. 
 <h5>Object recycling </h5>
 <pre class="code">
 if(bullet.targetY > bullet.gameWidth){
@@ -738,35 +768,35 @@ If bullets moved out of the game boundary, they will be recycled.
 The recycled bullet will be moved to a waiting area. When a new bullet was fired, a bullet from waiting area will be reused. 
 
 <h4><a name="h-2-3-m">2.3.13</a> Auto scale</h4>
-This game was designed for auto scale to fit different screen sizes.
+This game was designed for auto scaling to fit different screen sizes.
 <pre class="code">
 .canvasBg{
     height: 80%;
     width: 80%; 
     display:block;
     background:#CCCCCC;
-    margin: 10px auto 0px; /*for margin*/
+    margin: 10px auto 0px; <span class="comment">/*for margin</span>
     
     min-width: 400px;
     min-height: 250px;
 }
 
 .inner{
-    max-width: auto; /*with maxWidth and maxHeight,*/
+    max-width: auto; <span class="comment">/*with maxWidth and maxHeight,</span>
     max-height: auto;
-    /*background: red;*/
+    <span class="comment">/*background: red;</span>
 }    
 .canvasJet,.canvasEnemy,.canvasBullet,.canvasText{
     height: 80%;
     width: 80%;
     display:block;
-    margin: -500px auto 0px; /*for margin*/
+    margin: -500px auto 0px; <span class="comment">/*for margin</span>
 }
     
 </pre>
 Height=80% and width=80% of ".canvasJet" were designed to make the game auto fit browser's size. The background canvas worked well.
-However, It was not able to control the margin of canvasJet, to make the jet to display just over this background canvas.
-So the auto scale functionality was failed. Currently, the margin is hard coded. it will be fixed in further projects.<br />
+However, It was not able to control the margin of canvasJet. the canvasJet should display just over this background canvas to draw jet.
+So the auto scale functionality was failed. Instead of auto scaling, the margin was hard coded. it will be fixed in the further project.<br />
 
 The width and height were hard coded in the HTML. It should be in the CSS sheet, but it did not work as expect.
 <pre class="code">
@@ -774,10 +804,10 @@ The width and height were hard coded in the HTML. It should be in the CSS sheet,
 </pre>
 
 <h2><a name="h-3">3,</a>Development Environment</h2>
-This project offers mobile ability. To test this project in mobile devices, this project was uploaded into the cloud. 
+This project offers mobile ability. To test this project in mobile devices, it was uploaded into the cloud. 
 Codenvy is a cloud based IDE which supports HTML and Javascript development.
 Meanwhile, Codenvy supports web based IDE. Developers can developing by browsers anytime anywhere.
-GitHub can synchronize the source code between local developement enviroment and online IDE.
+Additionally, GitHub can synchronize the source code between local developement enviroment and online IDE.
 <img src="3_pic_13.png" class="reportImg"/>
 
 <h2><a name="h-4">4,</a>Testing</h2>
@@ -792,8 +822,8 @@ Your browser does not support the HTML5 canvas tag.
 </pre>
 Above solution is the easiest way to check HTML5 canvas ability. Nevertheless, this project adopted a challenging method -- checking by Javascript:
 <pre class="code">
-var canvasEl = document.createElement('canvas'); //create the canvas object
-if(!canvasEl.getContext) //if the method is not supported, i.e canvas is not supported
+var canvasEl = document.createElement('canvas'); <span class="comment">//create the canvas object</span>
+if(!canvasEl.getContext) <span class="comment">//if the method is not supported, i.e canvas is not supported</span>
 { 
   document.write("HTML5 Canvas Not Supported By Your Browser");
   return;
@@ -802,9 +832,9 @@ if(!canvasEl.getContext) //if the method is not supported, i.e canvas is not sup
 Or
 <pre class="code">
 if (Modernizr.canvas) {
-  // let's draw some shapes!
+  <span class="comment">// let's draw some shapes!</span>
 } else {
-  // no native canvas support available :(
+  <span class="comment">// no native canvas support available :(</span>
 }    
 </pre>
  
@@ -813,8 +843,8 @@ to notice users the current brower does not support Html5 canvas, if it supports
 <pre class="code">
 &lt;label id="html5checker_my"&gt; Dear user, your browser does not support html5, please use Chrome for this game. Thanks!&lt;/label&gt;
 function html5checking(){
-    var test_canvas = document.createElement("canvas"); //try and create sample canvas element
-    var canvascheck=(test_canvas.getContext)? true : false; //check if object supports getContext() method, a method of the canvas element
+    var test_canvas = document.createElement("canvas"); <span class="comment">//try and create sample canvas element</span>
+    var canvascheck=(test_canvas.getContext)? true : false; <span class="comment">//check if object supports getContext() method, a method of the canvas element</span>
     if(canvascheck){
         document.getElementById('html5checker_my').style.display='none';
     }else{
@@ -846,7 +876,6 @@ As above snapshots show, SAFE does not support "=" in URL. A url <a href="http:/
 &lt;input required/&gt;    
 </pre>
 The attribute "required" was illegal in SAFE, so all "required" validations was discarded.
-
 
 <h2><a name="h-6">6,</a>Google Cloud</h2>
 This project was also synchronized onto Google Cloud which can be accessed by : http://boocheeq.appspot.com/
