@@ -114,7 +114,7 @@ function allMyCode(){//TODO open this before submit
 	
 	function loadFn(){ 
 		BetterInnerHTML(document.getElementById("inner"), // http://www.optimalworks.net/resources/betterinnerhtml/
-			'<canvas id="canvasBg" class="canvasBg" width="800" height="500"></canvas>'+    //set size here rather than inset of the css file because: http://stackoverflow.com/questions/5034529/size-of-html5-canvas-via-css-versus-element-attributes
+			'<canvas id="canvasBg" class="canvasBg" width="800" height="500">Your browser does not support the HTML5 canvas tag.</canvas>'+    //set size here rather than inset of the css file because: http://stackoverflow.com/questions/5034529/size-of-html5-canvas-via-css-versus-element-attributes
 			'<canvas id="canvasJet" class="canvasJet" width="800" height="500"></canvas>' +   //because the size here is to decide how many pixels can  drawn here. if it is not specificed the default value is 300 *150
 			'<canvas id="canvasEnemy" class="canvasEnemy" width="800" height="500"></canvas>' + 
 			'<canvas id="canvasText" class="canvasText" width="800" height="500"></canvas>' + 
@@ -181,7 +181,9 @@ function allMyCode(){//TODO open this before submit
 			gameText.init();
 		}else{
 			jet1 = new Jet();
+            jet1.init();
 			gameText = new GameText();
+            jet1.init();
 		}
 		//bullets
 	    initBullets(bulletsAmount);

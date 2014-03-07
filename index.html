@@ -51,19 +51,19 @@
         				<p class="post-info">This post is written by Peter Wang</p>
         			</footer>
         			<content>
-        				<form name="input" action="params.html" method="get" class="form">
+        				<form name="input" action="params.html" method="get" class="form" data-parsley-validate="data-parsley-validate">
 	        				<table class="table">
 	        					<tr>
 	        						<td class="col1">Name *:</td>
-	        						<td class="col2"><input type="text" name="name" class="input" data-parsley-trigger="change"/></td>
+	        						<td class="col2"><input type="text" name="name" class="input" data-parsley-trigger="change" required="required"/></td>
 	        					</tr>
 	        					<tr>
 	        						<td class="col1">Password*:</td>
-	        						<td class="col2"><input type="password" name="password" class="input" data-parsley-trigger="change"/></td>
+	        						<td class="col2"><input type="password" name="password" class="input" data-parsley-trigger="change" required="required"/></td>
 	        					</tr>
 	        					<tr>
 	        						<td class="col1">Email*:</td>
-	        						<td class="col2"><input type="email" name="email" class="input" data-parsley-trigger="change"/></td>
+	        						<td class="col2"><input type="email" name="email" class="input" data-parsley-trigger="change" required="required"/></td>
 	        					</tr>
 	        					<tr>
 	        						<td class="col1">Age:</td>

@@ -44,7 +44,12 @@
         				<p class="post-info">This report is written by Ping Wang</p>
         			</footer>
         			<content>
-This report explains the client project which includes a XHTML5 webpage and a XHTML5 game.<br/>
+This report explains the client project which includes a XHTML5 webpage and a XHTML5 game. <br/><br/>
+
+I haven't do CSS and Javascript developing before and game developing aslo. This is a great chance for me to learn these technologies.
+
+In order to learn those new languages, I haven't use any third party libraries and frameworks. All logic and styles were managed by Javascript and CSS only, and all codes were 
+developed by myself.<br/>
 
 <div class="subtoc">
 	<p>Contents</p>
@@ -98,7 +103,7 @@ This report explains the client project which includes a XHTML5 webpage and a XH
                 <li><a href="#h-2-3-d">Javascript Trick</a></li>
                 <ol>
                     <li><a href="#h-2-3-d-1">Event</a></li>
-                    <li><a href="#h-2-3-d-2">Single javascript function</a></li>
+                    <li><a href="#h-2-3-d-2">Single Javascript Function</a></li>
                     <li><a href="#h-2-3-d-3">Innerhtml</a></li>
                 </ol>
                 <li><a href="#h-2-3-e">Object-Oriented programming</a></li>
@@ -113,6 +118,11 @@ This report explains the client project which includes a XHTML5 webpage and a XH
             </ol>
 		</ol>
 		<li><a href="#h-3">Development Environment</a></li>
+        <li><a href="#h-4">Testing</a></li>
+        <li><a href="#h-5">SAFE Error Handling</a></li>
+        <li><a href="#h-6">Google Cloud</a></li>
+		
+		
 	</ol>
 </div>
 
@@ -339,13 +349,12 @@ Regarding Font, below are the global settings for text styles.
 
 <h3><a name="h-1-3">1.3,</a> Form</h3>
 <h3><a name="h-1-3-a">1.3.1,</a>HTML form</h3>
-This project has a HTML form. This form was arounded by a table. Date fields' name located in the first columns and all HTML input tags
+This project has a HTML form. This form's layout was managed by a table. Date fields' name located in the first columns and all HTML input tags
 located in the second columns.  
 <img src="1_html_2.png" class="reportImg"/>
-However, the attribute "required" was illegal in SAFE, so all form validations was discarded in SAFE. but it works on the Google Cloud (more Google Cloud version explaination was listed in later sections).
 
 <h3><a name="h-1-3-b">1.3.2,</a>Validation</h3>
-<a href="http://parsleyjs.org/">Parsleyjs</a> was adopted in this project. Parsleyjs is a very simple javascript library,
+<a href="http://parsleyjs.org/">Parsleyjs</a> was adopted in this project. Parsleyjs is a very simple Javascript library,
 To add this ability into a HTML web page, developers can simply add "data-parsley-validate" into "form" tags.<br/>
 "required" is used for configurating a compulsion field.<br />
 "type="email"" is used for setting a email field, this field will be validated as an email address.<br />
@@ -399,9 +408,9 @@ Finally, paste into a new file which has transparent background.
 <h4><a name="h-2-1-e">2.1.5</a> Explosing</h4>
 <img src="3_pic_5.png" class="reportImg"/>
 <h4><a name="h-2-1-f">2.1.6</a> Background</h4>
-Drawing background. The drawing was learnt from a <a href="http://www.how-to-draw-cartoons-online.com/cartoon-desert.html">tutorials</a>.<br />
+Regarding drawing background, the drawing was learnt from a <a href="http://www.how-to-draw-cartoons-online.com/cartoon-desert.html">tutorials</a>.<br />
 <br />
-Deleting segment of lines in Inkscape was difficult. It was solved by drawing "brush strokes" and “cut path” 
+One thing worth to mention was deleting segment of lines in Inkscape was difficult. It was solved by drawing "brush strokes" and “cut path” 
 <img src="3_pic_6.png" class="reportImg"/>
 
 Colours were filled by GIMP. Sunshine was created by "smudge tool". Airbrush was used to create shadow and "pencil tool" was used to change the drawing in detail. 
@@ -421,27 +430,27 @@ HTML5 canvas was used for game animation. But in HTML aspect, the only code is:
 	&lt;div id="inner" class="inner"&gt;
 	&lt;/div&gt;
 </pre>
-The Html5 canvas was not here but located in the javascript file (will be explained in javascript section). 
-The purpose of the design was  to make the game easily to be shared. 
+The Html5 canvas was not here, it was in the Javascript file (will be explained in Javascript section). 
+The purpose of the design was to make the game easily to be shared. 
 By this solution, users can embed this game into other web pages by copying this "inner" HTML tag and the game.js. 
 <h3><a name="h-2-3">2.3,</a> Javascript</h3>
 
 <h4><a name="h-2-3-a">2.3.1</a> Mechanism</h4>
 The mechanism of this html5 game was "canvas drawing" + "looping". Regarding the looping principle, it will be introduced in detail in later sections.<br />
-Five canvases were created for drawing different characters, such as the jet, enemies, the background, bullets, explosions and the game score.
+Regarding the canvas drawing, five canvases were created for drawing different characters, such as the jet, enemies, the background, bullets, explosions and the game score.
 They were all transparent and overlaping with each others.<br /><br />
 This is the code of canvas drawing:
 <pre class="code">
 anJetCtx.drawImage(bgImage,this.srcX,this.srcY,this.imageWidth,this.imageheight,this.targetX,this.targetY,this.objWidth,this.objHeight);
 </pre>
-This function was used to draw a segment of a image into a canvas. The area of segment was specificed by srcX and srcY.
+This function was used to draw a segment of a image into a canvas. The segment was specificed by srcX and srcY.
 So, all animataion characters can be put into a single image. 
-There were several javascript classes designed for each characters and signed with different srcX and srcY.
-This design matched the Object-Oriented programming.
+There were several Javascript classes designed for each characters and signed with different srcX and srcY.
+This design matched the Object-Oriented programming (more about Object-Oriented programming will be introduced in later section).
 
 
 <h4><a name="h-2-3-b">2.3.2</a> Touch screen for tablet</h4>
-To support touch screen devices, HTML and javascript were both modified:<br />
+To support touch screen devices, HTML and Javascript were both modified:<br />
 Adding the "viewport" into meta (viewport was introducted in earler chapter) and adding touching event listeners (events will be explained in the event section below). 
 All that solutions were learnt from an online <a href="http://www.onlywebpro.com/2012/01/28/game-development-mouse-and-touch-event-detection/">post</a>.
 
@@ -465,12 +474,12 @@ if (addEventListener) addEventListener("load",allMyCode,false);
 else attachEvent("onload", allMyCode);
 // window.addEventListener("load",loadFn,false);
 </pre>
-<h4><a name="h-2-3-d-2">2.3.4.2</a> Single javascript function</h4>
-All codes were located in "allMyCode" function, the advatage was if variables or functions' name were conflict with other javascripts.
+<h4><a name="h-2-3-d-2">2.3.4.2</a> Single Javascript Function</h4>
+All codes were located in "allMyCode" function, the advatage was if variables or functions' name were conflict with other Javascripts "moudles".
 However, that would disable the ability of checking variables in Google chrome. 
 
 <h4><a name="h-2-3-d-3">2.3.4.3</a> Innerhtml</h4>
-As this report mentioned above, to make this game easliy to be shared, all htmls were located in javascript section.
+As this report mentioned above, to make this game easliy to be shared, all htmls were located in Javascript section.
 Innterhtml was used to add HTML tags into main HTML file. However, it was not safe solution. Therefore "<a href="// http://www.optimalworks.net/resources/betterinnerhtml/">BetterInnerHTML</a>" was adopted.
 <pre class="code">
 BetterInnerHTML(document.getElementById("inner"), 
@@ -483,8 +492,11 @@ BetterInnerHTML(document.getElementById("inner"),
 </pre>
 
 <h4><a name="h-2-3-e">2.3.5</a> Object-Oriented programming</h4>
-Javascript is not a Object-Oriented language. Two Object-Oriented solutions were adopted in this project:
+By default, Javascript is not a Object-Oriented language, but it can be implimented by somehow. There are several different ways to achive that. 
+To practice Javascript Object-Oriented programming (OOP), this project used two ways to do OOP in Javascript. 
 <pre class="code">
+//---------prototype based
+    
 function Enemy() {
 	this.gameWidth = canvasBg.width;
 	this.gameHeight = canvasBg.height;
@@ -503,7 +515,7 @@ function createANewBullet(){
 	return item;
 }
 </pre>
-
+And
 <pre class="code">
 var Explosion ={
 	srcX : 0,
@@ -515,7 +527,27 @@ var Explosion ={
 function explosionInit(){
 }
 </pre>
-Both solutions were adobted in this project. but the first soution was highly recommended.
+Both solutions were adobted in this project. but the second soution was highly recommended. <br/><br/>
+The differents of these two solutions are:  the function Enemy() in the first solution is a constructor, developers can do computing here.
+all codes in this function will not be invoked untill an object of this class is created. 
+In the second solution, there is no constructor for the class, the first paragraph was a class definition, all code here will be excuted 
+when the Javascript file was loaded. Therefore,logic code shouldn't be put here. An init() function can be created for doing initialized computing.<br/><br/>
+
+To an instance of those classes,"Object" was used to do this. However, the "Ojbect" is a new feature. So, to be compatible with elder browsers,
+ the solution of this project was: 
+<pre class="code">
+function createANewBullet(){
+    var item;
+    if(Object){
+        item = Object.create(Bullet);
+    }else{
+        item = new Bullet();
+    }
+    item.init();
+    return item;
+}
+</pre>
+
 
 
 <h4><a name="h-2-3-f">2.3.6</a> Game level</h4>
@@ -637,7 +669,7 @@ function cleanBulletInterval(){
 
 <h4><a name="h-2-3-j">2.3.10</a> Sprite</h4>
 All pictures were integrated into one sprite picture. The main purpose of this mergining was less the network transactions to lower
-the network loading failed risk. Meanwhile, all javascript were waiting for assets loading. 
+the network loading failed risk. Meanwhile, all Javascript were waiting for assets loading. 
 It was hard to monitor all pictures loading progress. One picture was much easier to handle.
 
 
@@ -741,16 +773,22 @@ The width and height were hard coded in the HTML. It should be in the CSS sheet,
 
 <h2><a name="h-3">3,</a>Development Environment</h2>
 This project offers mobile ability. To test this project in mobile devices, this project was uploaded into the cloud. 
-Codenvy is a cloud based IDE which supports HTML and javascript development.
+Codenvy is a cloud based IDE which supports HTML and Javascript development.
 Meanwhile, Codenvy supports web based IDE. Developers can developing by browsers anytime anywhere.
 GitHub can synchronize the source code between local developement enviroment and online IDE.
 <img src="3_pic_13.png" class="reportImg"/>
 
 <h2><a name="h-4">4,</a>Testing</h2>
-This project was tested by IE6, Firefox, Safari, Chrome and Opera. Because there are several new CSS features such as coner radius are 
-not supported by IE6 but the layout and content can work as normal. <br />
-Regarding the Html5 canvas, old browsers do not supprt, such IE6. a notification will display on the web page if Html5 canvas is not supprted.
-There are several solutions for checking Html5 canvas supporting.
+This project was tested by IE6, Firefox, Safari, Chrome and Opera. Because there are several new CSS features such as coner radius. They are 
+not supported by IE6 but the layout and content can work as normal. <br /><br />
+Regarding the Html5 canvas, old browsers do not supprt it, such IE6. a notification will display on the web page if Html5 canvas is not supprted.
+There are several solutions for checking HTHML5 canvas supporting:
+<pre class="code">
+&lt;canvas&gt;  
+Your browser does not support the HTML5 canvas tag.
+&lt;/canvas&gt;  
+</pre>
+Above solution is the easiest way to check HTML5 canvas ability. Nevertheless, this project adopted a challenging method -- checking by Javascript:
 <pre class="code">
 var canvasEl = document.createElement('canvas'); //create the canvas object
 if(!canvasEl.getContext) //if the method is not supported, i.e canvas is not supported
@@ -759,6 +797,7 @@ if(!canvasEl.getContext) //if the method is not supported, i.e canvas is not sup
   return;
 }
 </pre>
+Or
 <pre class="code">
 if (Modernizr.canvas) {
   // let's draw some shapes!
@@ -767,7 +806,7 @@ if (Modernizr.canvas) {
 }    
 </pre>
  
-However, above solutions were failed the testing in IE6. All js were collapsed. Alternatively, the solution of this project was that adding a Label tag
+However, above solutions were failed the testing in IE6. The Javascript were collapsed. Alternatively, the solution of this project was adding a Label tag
 to notice users the current brower does not support Html5 canvas, if it supports Html5 canvas, the Label tag will be removed.
 <pre class="code">
 &lt;label id="html5checker_my"&gt; Dear user, your browser does not support html5, please use Chrome for this game. Thanks!&lt;/label&gt;
@@ -781,11 +820,20 @@ function html5checking(){
     }
 }         
 </pre>
-One thing was worth noting, this code segement used javascript control CSS style.
-
+One thing was worth noting, this code segement used Javascript control CSS style.<br/>
+Testing on IE6 for XHTML section: (Lost "border-radius" style, because it is a new CSS3 feature. But the web page can display without problems.)
 <img src="5_test_ie_1.png" class="reportImg"/>
+Testing on IE6 for the game section: (IE6 does not support HTML5 canvas. The application showed proper notification)
 <img src="5_test_ie_2.png" class="reportImg"/>
+IE 8 for the XHTML section
+<img src="5_test_ie_3.png" class="reportImg"/>
+IE 9 for the XHTML section
+<img src="5_test_ie_4.png" class="reportImg"/>
+IE 9 for the game section.
+<img src="5_test_ie_6.png" class="reportImg"/>
+Testing on Opera, Chrome, Firefox, Safari.
 <img src="5_test_1.png" class="reportImg"/>
+Mobile devices.
 <img src="5_test_2.png" class="reportImg"/>
 Opera has issue with Html5 canvas, so it failed on game testing.
 
